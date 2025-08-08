@@ -38,4 +38,4 @@ The outcome depends on your **strength**, **weapon damage**, and **armour defens
    java Battle
 
 ***this README.md was written with the help of Lucy***
-<l>Lucy also helped with editting, formatting and trouble shooting</l>
+<p>Lucy also helped with editting, formatting and trouble shooting</p>
