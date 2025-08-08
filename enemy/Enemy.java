@@ -1,41 +1,36 @@
 package enemy;
 
-import warrior.*;
-import weapon.*;
-import armour.*;
+import warrior.Orc;
+import warrior.Warrior;
+import weapon.WarHammer;
+import weapon.Weapon;
+import armour.Armour;
+import armour.Chainmail;
 
 public class Enemy {
-    private Warrior warrior;
-    private Weapon weapon;
-    private Armour armour;
+    private final Warrior warrior;
+    private final Weapon weapon;
+    private final Armour armour;
 
     public Enemy() {
-        this.warrior = new Orc();
-        this.weapon = new WarHammer();
-        this.armour = new Chainmail();
+        this.warrior = new Orc();             // Always an Orc
+        this.weapon = new WarHammer();        // Always a WarHammer
+        this.armour = new Chainmail();        // Always Chainmail
     }
 
     public float attack(Warrior player, Armour playerArmour) {
-        // Random attack type: 1 (normal) or 2 (heavy)
         int attackType = (int)(Math.random() * 2) + 1;
 
-        // Calculate raw damage from weapon strike method
-        float rawDamage = weapon.strike(
+        float damage = weapon.strike(
             attackType,
             warrior.getStrength(),
             warrior.getDexterity(),
             playerArmour.getDexCost()
         );
 
-        // Reduce damage by player's armour protection %
-        float damageAfterArmor = rawDamage * (1 - (playerArmour.getProtectionAmount() / 100.0f));
+        damage *= (1 - playerArmour.getProtectionAmount() / 100.0f);
 
-        // Ensure minimum damage of 1 if damage > 0
-        if (damageAfterArmor > 0 && damageAfterArmor < 1) {
-            damageAfterArmor = 1;
-        }
-
-        return damageAfterArmor;
+        return damage;
     }
 
     public Warrior getWarrior() {

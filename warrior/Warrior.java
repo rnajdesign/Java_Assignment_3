@@ -14,12 +14,15 @@ public abstract class Warrior {
         this.type = type;
     }
 
+    // Getters
     public String getType() {
         return type;
     }
 
     public int getHealth() {
-        if (health < 0) return 0;
+        if (health < 0) {
+            return 0;
+        }
         return health;
     }
 
@@ -31,6 +34,7 @@ public abstract class Warrior {
         return dexterity;
     }
 
+    // Setters
     public void setHealth(int h) {
         health = h;
     }
@@ -43,6 +47,7 @@ public abstract class Warrior {
         dexterity = d;
     }
 
+    // Take damage
     public void reduceHealth(float damage) {
         health -= (int) damage;
     }

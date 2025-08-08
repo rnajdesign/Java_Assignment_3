@@ -6,7 +6,7 @@ import enemy.*;
 
 import java.util.Random;
 
-public class LOTR {
+public class Battle {
     private static final Ink ink = new Ink();
     private static final Validator validator = new Validator();
     private static final Random rand = new Random();
@@ -37,7 +37,7 @@ public class LOTR {
                     pArmour.getDexCost()
                 );
 
-                damage *= (enemy.getArmour().getProtectionAmount() / 100.0f);
+                damage *= (1 - enemy.getArmour().getProtectionAmount() / 100.0f);
 
                 if (damage > 0) {
                     enemy.getWarrior().reduceHealth(damage);
@@ -89,7 +89,7 @@ public class LOTR {
         else if (armourChoice == 2) pArmour = new Chainmail();
         else pArmour = new Platemail();
 
-        enemy = new Enemy();
+        enemy = new Enemy(); // always an Orc with fixed gear
 
         ink.printStats(player, pWeapon, pArmour, enemy.getWarrior(), enemy.getWeapon(), enemy.getArmour());
     }

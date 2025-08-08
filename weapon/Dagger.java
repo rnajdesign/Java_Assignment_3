@@ -1,13 +1,29 @@
 package weapon;
 
 public class Dagger extends Weapon {
+    private final int baseDamage = 50;
+    private final int dexCost = 25;
+    private final int hitChance = 60;
+
     public Dagger() {
         super("Dagger");
+        setBaseDamage(baseDamage);
+        setDexCost(dexCost);
     }
+    @Override
+    public int strike(int attackType, int strength, int dexterity, int aDexCost) {
+        int damageAmount = 0;
 
-    public float strike(int attackType, int strength, int dexterity, int dexCost) {
-        if (dexterity < dexCost) return 0;
-        if (attackType == 1) return strength * 0.4f;
-        else return strength * 0.3f;
+        int roll = randNum.nextInt(100) + 1;
+
+        roll += attackType * 5;
+        roll -= dexterity / 20;
+        roll += aDexCost / 10;
+
+        if (roll <= hitChance) {
+            damageAmount = baseDamage + randNum.nextInt(strength / 5 + 1);
+        }
+
+        return damageAmount;
     }
 }

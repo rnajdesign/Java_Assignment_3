@@ -3,12 +3,11 @@ package utility;
 import java.util.Scanner;
 
 public class Validator {
-    private Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
 
     // Constructor
     public Validator() {}
 
-    // Generic method to validate choice between 1 and maxVal with a prompt
     public int validatePick(int maxVal) {
         int choice = 0;
         while (true) {
@@ -28,7 +27,6 @@ public class Validator {
         return choice;
     }
 
-    // Specifically for attack choices, can call validatePick directly or keep separate for clarity
     public int validateAttackPick(int maxVal) {
         return validatePick(maxVal);
     }
