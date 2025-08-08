@@ -35,6 +35,7 @@ The outcome depends on your **strength**, **weapon damage**, and **armour defens
    Open a terminal in the project root folder and run:
    ```bash
    javac *.java
+   java Battle
 
 ***this README.md was written with the help of Lucy***
-***Lucy helped with editting, formatting and trouble shooting***
+<l>Lucy also helped with editting, formatting and trouble shooting</l>
